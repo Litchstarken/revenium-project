@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { MetricUpdate, PollingConfig } from '../types';
+import type { MetricUpdate, PollingConfig } from '../types';
 import { isAnomaly } from '../lib/utils';
 
 export interface Anomaly {

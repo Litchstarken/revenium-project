@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useMetricsStore } from '../store/useMetricsStore';
-import { MetricUpdate, MetricsResponse } from '../types';
+import type { MetricUpdate, MetricsResponse } from '../types';
 
 const API_BASE = '/api';
 const MAX_RETRIES = 5;
@@ -13,10 +13,10 @@ export const useDataFetcher = () => {
     setConnectionStatus,
   } = useMetricsStore();
 
-  const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const pollingIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const eventSourceRef = useRef<EventSource | null>(null);
   const retryCountRef = useRef(0);
-  const retryTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastPollTimestampRef = useRef<string | null>(null);
 
   // Calculate exponential backoff delay
