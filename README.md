@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# Revenium AI FinOps Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+A real‑time dashboard for monitoring AI usage and costs. Built with **React 18**, **TypeScript**, **Vite**, **Tailwind CSS**, **ShadCN UI**, **Zustand** for state management, and **Recharts** for visualizations. A mock backend server (Node/Express) streams metric updates via polling or Server‑Sent Events (SSE).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Quick Start
 
-## React Compiler
+```bash
+# Clone the repo (if not already)
+git clone https://github.com/Litchstarken/revenium-project.git
+cd revenium-project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Install dependencies
+npm install
 
-## Expanding the ESLint configuration
+# Start the mock backend (already running in your setup)
+npm run server   # runs on http://localhost:3001
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start the frontend dev server
+npm run dev      # runs on http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The dashboard will automatically connect to the backend and display live metrics.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `dev` – Starts Vite dev server.
+- `build` – Builds the production bundle.
+- `test` – Runs Vitest unit and component tests.
+- `test:watch` – Runs tests in watch mode.
+- `test:coverage` – Generates coverage report.
+- `server` – Starts the mock Express server.
+
+## Features
+
+- Real‑time metric updates (polling & SSE).
+- Anomaly detection with visual alerts.
+- Interactive controls to toggle fetching mode, pause/resume, and clear data.
+- Responsive UI built with ShadCN components and Tailwind.
+
+---

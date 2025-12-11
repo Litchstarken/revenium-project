@@ -1,0 +1,14 @@
+# Use an official Node runtime as a base for the mock server
+FROM node:20-alpine AS backend
+WORKDIR /app
+
+# Install only production dependencies
+COPY package.json package-lock.json* ./
+RUN npm ci --only=production
+
+# Copy server source (only needed files)
+COPY server ./server
+COPY src/types ./src/types
+
+EXPOSE 3001
+CMD ["node", "server/index.js"]

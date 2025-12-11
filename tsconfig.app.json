@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
+    "types": ["vite/client", "vitest/globals"],
     "verbatimModuleSyntax": true,
 
     /* Bundler mode */

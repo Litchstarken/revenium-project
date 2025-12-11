@@ -27,9 +27,9 @@ export const AnomalyAlerts = () => {
           {unacknowledgedAnomalies.length === 0 ? (
             <p className="text-sm text-muted-foreground">No anomalies detected</p>
           ) : (
-            unacknowledgedAnomalies.map(anomaly => (
+            unacknowledgedAnomalies.map((anomaly, idx) => (
               <div
-                key={anomaly.id}
+                key={`${anomaly.id}-${anomaly.metric}-${idx}`}
                 className="flex items-start justify-between p-3 border rounded-lg bg-destructive/5 border-destructive/20"
               >
                 <div className="flex-1">

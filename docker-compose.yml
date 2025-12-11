@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - '5173:80'
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_BASE=/api
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - '3001:3001'
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
